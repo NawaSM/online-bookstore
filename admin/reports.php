@@ -15,6 +15,7 @@ if (isAdmin()) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard</title>
+    <script src="../js/admin-notifications.js"></script>
 </head>
 <body>
     <h2>Welcome, <?php echo $_SESSION['username']; ?>!</h2>

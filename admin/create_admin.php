@@ -57,6 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Admin Account</title>
     <link rel="stylesheet" href="../css/admin.css">
+    <script src="../js/admin-notifications.js"></script>
 </head>
 <body>
     <div class="login-container">
