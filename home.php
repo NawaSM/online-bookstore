@@ -1,31 +1,7 @@
 <?php
 session_start();
-require_once 'includes/db_connect.php';
-require_once 'includes/functions.php';
-
 $isLoggedIn = isset($_SESSION['user_id']);
-
-// For debugging:
-var_dump($_SESSION);
-
-echo "<h2>Debug Information:</h2>";
-echo "User ID: " . ($_SESSION['user_id'] ?? 'Not set') . "<br>";
-
-// Check cart items in the database
-$user_id = $_SESSION['user_id'] ?? 0;
-$stmt = $pdo->prepare("SELECT ci.*, i.book_name, i.price 
-                       FROM cart_items ci
-                       JOIN inventory i ON ci.book_id = i.id
-                       WHERE ci.user_id = ?");
-$stmt->execute([$user_id]);
-$cart_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-echo "<h3>Cart Items in Database:</h3>";
-echo "<pre>";
-print_r($cart_items);
-echo "</pre>";
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,26 +60,45 @@ echo "</pre>";
     </header>
 
 
-
-    <div class="container">
-        <h1>Your Shopping Cart</h1>
-        <div id="cart-items"></div>
-        <div id="wishlist"></div>
-        <div id="cart-summary">
-            <h2>Cart Summary</h2>
-            <div id="summary-details"></div>
-            <div id="discount-section">
-                <input type="text" id="discount-code" placeholder="Enter discount code">
-                <button class="navy-button">Apply Discount</button>
+    <main>
+        <section class="ad-carousel">
+            <div class="ad-container">
+                <div class="ad-slide active">
+                    <div class="promo-banner">
+                        <h2>SPEND OVER RM99</h2>
+                        <p>RECEIVE SHIPPING DISCOUNTS!</p>
+                        <span class="free-delivery">FREE DELIVERY</span>
+                        <span class="rm1-rebate">RM1 REBATE</span>
+                    </div>
+                </div>
+                <div class="ad-slide">
+                    <img src="images/ad1.jpg" alt="Advertisement 1">
+                </div>
+                <div class="ad-slide">
+                    <img src="images/ad2.jpg" alt="Advertisement 2">
+                </div>
+                <div class="ad-slide">
+                    <img src="images/ad3.jpg" alt="Advertisement 3">
+                </div>
             </div>
-            <textarea id="special-remarks" placeholder="Special remarks"></textarea>
-            <button class="navy-button">Pay Now</button>
-        </div>
-        <div id="payment-status"></div>
-    </div>
-    
-   
+            <button class="nav-button prev">‹</button>
+            <button class="nav-button next">›</button>
+        </section>
 
+        <section class="bestsellers">
+            <div class="section-header">
+                <h3>Bestsellers</h3>
+                <button class="view-more">View More</button>
+            </div>
+            <div class="book-slider-container">
+                <button class="slider-button left">‹</button>
+                <div id="bookSlider" class="book-slider">
+                    <!-- Book items will be dynamically added here -->
+                </div>
+                <button class="slider-button right">›</button>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <p>&copy; 2024 Online Bookstore. All rights reserved.</p>
@@ -113,16 +108,20 @@ echo "</pre>";
             <a href="#">Contact Us</a>
         </nav>
     </footer>
-    <script src="cart.js"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('DOM fully loaded');
-        try {
-            loadCart();
-        } catch (error) {
-            console.error('Error loading cart:', error);
-        }
-    });
-    </script>
+
+    <div id="book-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img id="modal-image" src="" alt="Book Cover">
+            <h2 id="modal-title"></h2>
+            <p id="modal-price"></p>
+            <div id="modal-rating"></div>
+            <p id="modal-description"></p>
+            <button class="add-to-cart">Add to Cart</button>
+            <button class="add-to-wishlist">Add to Wishlist</button>
+        </div>
+    </div>
+
+    <script src="home.js"></script>
 </body>
 </html>

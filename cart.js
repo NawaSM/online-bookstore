@@ -5,6 +5,7 @@ let cart = [];
 let wishlist = [];
 
 function loadCart() {
+    console.log('Loading cart...');
     fetch('cart_actions.php', {
         method: 'POST',
         headers: {
@@ -14,10 +15,12 @@ function loadCart() {
     })
     .then(response => response.json())
     .then(data => {
+        console.log('Cart data received:', data);
         if (data.error) {
             console.error('Error:', data.error);
         } else {
             cart = data;
+            console.log('Cart after loading:', cart);
             renderCart();
             updateCartCount();
         }
@@ -27,28 +30,30 @@ function loadCart() {
 
 // Function to render cart items
 function renderCart() {
+    console.log('Rendering cart:', cart);
     const cartElement = document.getElementById('cart-items');
     cartElement.innerHTML = '<h2>Cart Items</h2>';
 
-    if (cart.length === 0) {
+    if (!Array.isArray(cart) || cart.length === 0) {
+        console.log('Cart is empty or not an array');
         cartElement.innerHTML += '<p>Your cart is empty.</p>';
         document.getElementById('cart-summary').style.display = 'none';
         return;
-    } else {
-        document.getElementById('cart-summary').style.display = 'block';
     }
 
+    document.getElementById('cart-summary').style.display = 'block';
+
     cart.forEach(item => {
+        console.log('Rendering item:', item);
         const itemElement = document.createElement('div');
         itemElement.className = 'cart-item';
         itemElement.innerHTML = `
-            <span>${item.title} - $${item.price.toFixed(2)} x ${item.quantity}</span>
+            <span>${item.book_name} - $${parseFloat(item.price).toFixed(2)} x ${item.quantity}</span>
             <div>
-                <button onclick="updateQuantity(${item.id}, ${item.quantity - 1})" class="navy-button">-</button>
+                <button onclick="updateQuantity(${item.book_id}, ${item.quantity - 1})" class="navy-button">-</button>
                 <span class="quantity">${item.quantity}</span>
-                <button onclick="updateQuantity(${item.id}, ${item.quantity + 1})" class="navy-button">+</button>
-                <button onclick="moveToWishlist(${item.id})" class="navy-button">Move to Wishlist</button>
-                <button onclick="removeFromCart(${item.id})" class="navy-button">Remove</button>
+                <button onclick="updateQuantity(${item.book_id}, ${item.quantity + 1})" class="navy-button">+</button>
+                <button onclick="removeFromCart(${item.book_id})" class="navy-button">Remove</button>
             </div>
         `;
         cartElement.appendChild(itemElement);
@@ -281,13 +286,6 @@ function clearCart() {
 // Optional: Function to save and load cart from localStorage (persists cart across sessions)
 function saveCart() {
     localStorage.setItem('cart', JSON.stringify(cart));
-}
-
-function loadCart() {
-    const savedCart = localStorage.getItem('cart');
-    if (savedCart) {
-        cart = JSON.parse(savedCart);
-    }
 }
 
 function saveWishlist() {

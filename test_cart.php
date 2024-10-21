@@ -8,6 +8,8 @@ if (!isset($_SESSION['user_id'])) {
     $_SESSION['user_id'] = 1; // Use a test user ID
 }
 
+echo "Current user_id: " . ($_SESSION['user_id'] ?? 'Not set');
+
 // Fetch some books from the inventory for testing
 $stmt = $pdo->query("SELECT id, book_name, price FROM inventory LIMIT 5");
 $books = $stmt->fetchAll(PDO::FETCH_ASSOC);

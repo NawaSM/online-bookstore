@@ -3,6 +3,9 @@ session_start();
 require_once 'includes/db_connect.php';
 require_once 'includes/functions.php';
 
+error_log('Session data: ' . print_r($_SESSION, true));
+error_log('POST data: ' . print_r($_POST, true));
+
 header('Content-Type: application/json');
 
 if (!isset($_SESSION['user_id'])) {
@@ -71,14 +74,18 @@ function removeFromCart($pdo, $user_id, $book_id) {
 
 function getCart($pdo, $user_id) {
     try {
-        $stmt = $pdo->prepare("SELECT c.book_id, c.quantity, b.book_name, b.price, b.img 
+        $stmt = $pdo->prepare("SELECT c.book_id, c.quantity, b.book_name, b.price 
                                FROM cart_items c 
                                JOIN inventory b ON c.book_id = b.id 
                                WHERE c.user_id = ?");
         $stmt->execute([$user_id]);
         $cart_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        error_log('Cart items for user ' . $user_id . ': ' . print_r($cart_items, true));
+        
         echo json_encode($cart_items);
     } catch (PDOException $e) {
+        error_log('Error in getCart: ' . $e->getMessage());
         echo json_encode(['error' => $e->getMessage()]);
     }
 }
