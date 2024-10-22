@@ -38,8 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
                 // Insert new admin
-                $stmt = $pdo->prepare("INSERT INTO admins (username, password, email) VALUES (?, ?, ?)");
-                $stmt->execute([$username, $hashed_password, $email]);
+                $stmt = $pdo->prepare("INSERT INTO admins (username, password, email, role) VALUES (?, ?, ?, ?)");
+                $stmt->execute([$username, $hashed_password, $email, 'regular']); 
 
                 $success = "Admin account created successfully!";
             }

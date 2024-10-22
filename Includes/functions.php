@@ -7,7 +7,7 @@ function sanitize_input($data) {
 }
 
 function is_admin_logged_in() {
-    return isset($_SESSION['admin_id']);
+    return isset($_SESSION['admin_id']) && isset($_SESSION['admin_role']);
 }
 
 function redirect($url) {

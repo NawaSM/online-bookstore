@@ -151,8 +151,8 @@ $promo_codes = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <tr>
                         <td><?php echo htmlspecialchars($promo['code']); ?></td>
                         <td><?php echo ucfirst($promo['discount_type']); ?></td>
-                        <td><?php echo $promo['discount_value']; ?><?php echo $promo['discount_type'] == 'percentage' ? '%' : '$'; ?></td>
-                        <td>$<?php echo number_format($promo['min_purchase'], 2); ?></td>
+                        <td><?php echo $promo['discount_value']; ?><?php echo $promo['discount_type'] == 'percentage' ? '%' : 'RM'; ?></td>
+                        <td>RM <?php echo number_format($promo['min_purchase'], 2); ?></td>
                         <td><?php echo $promo['start_date']; ?></td>
                         <td><?php echo $promo['end_date']; ?></td>
                         <td>

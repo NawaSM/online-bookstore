@@ -43,6 +43,7 @@ $genres_map = array_column($all_genres, 'name', 'id');
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Category</th>
+                        <th>Release Year</th>
                         <th>Genres</th>
                         <th>Status</th>
                         <th>Special</th>
@@ -63,9 +64,10 @@ $genres_map = array_column($all_genres, 'name', 'id');
                         <td><?php echo htmlspecialchars($item['book_name']); ?></td>
                         <td><?php echo htmlspecialchars($item['author']); ?></td>
                         <td><?php echo htmlspecialchars($item['isbn']); ?></td>
-                        <td>$<?php echo number_format($item['price'], 2); ?></td>
+                        <td>RM<?php echo number_format($item['price'], 2); ?></td>
                         <td><?php echo $item['quantity']; ?></td>
                         <td><?php echo htmlspecialchars($item['category_name']); ?></td>
+                        <td><?php echo $item['release_year']; ?></td>
                         <td>
                             <?php
                             $book_genres = explode(',', $item['genres']);
@@ -80,7 +82,7 @@ $genres_map = array_column($all_genres, 'name', 'id');
                         <td>
                             <?php
                             if ($item['is_special'] && $item['special_price']) {
-                                echo '<span class="special-price">$' . number_format($item['special_price'], 2) . '</span>';
+                                echo '<span class="special-price">RM' . number_format($item['special_price'], 2) . '</span>';
                             } else {
                                 echo 'N/A';
                             }

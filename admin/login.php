@@ -7,6 +7,7 @@ if (is_admin_logged_in()) {
     redirect('index.php');
 }
 
+
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -20,6 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($admin && password_verify($password, $admin['password'])) {
         $_SESSION['admin_id'] = $admin['id'];
         $_SESSION['admin_username'] = $admin['username'];
+        $_SESSION['admin_role'] = $admin['role'];
+        error_log("Admin logged in - Role: " . $_SESSION['admin_role']);
         redirect('index.php');
     } else {
         $error = "Invalid username or password";
@@ -53,6 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <button type="submit">Login</button>
         </form>
+        <p><a href="forgot_password.php">Forgot Password?</a></p>
     </div>
 </body>
 </html>

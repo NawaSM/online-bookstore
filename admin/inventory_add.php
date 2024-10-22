@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $isbn = sanitize_input($_POST['isbn']);
     $price = floatval($_POST['price']);
     $quantity = intval($_POST['quantity']);
-    $release_date = sanitize_input($_POST['release_date']);
+    $release_year = intval($_POST['release_year']);
     $img = sanitize_input($_POST['img']);
     $genres = isset($_POST['genres']) ? implode(',', $_POST['genres']) : '';
     $category = sanitize_input($_POST['category']);
@@ -39,8 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error = "Please fill all required fields with valid data.";
     } else {
         try {
-            $stmt = $pdo->prepare("INSERT INTO inventory (book_name, author, isbn, price, quantity, release_date, img, genres, category, status, is_special, special_price) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$book_name, $author, $isbn, $price, $quantity, $release_date, $img, $genres, $category, $status, $is_special, $special_price]);
+            $stmt = $pdo->prepare("INSERT INTO inventory (book_name, author, isbn, price, quantity, release_year, img, genres, category, status, is_special, special_price) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$book_name, $author, $isbn, $price, $quantity, $release_year, $img, $genres, $category, $status, $is_special, $special_price]);
             $_SESSION['success_message'] = "Book added successfully!";
             header("Location: inventory_add.php");
             exit();
@@ -104,8 +104,8 @@ if (isset($_SESSION['success_message'])) {
                 </div>
 
                 <div class="form-group">
-                    <label for="release_date">Release Date:</label>
-                    <input type="date" id="release_date" name="release_date">
+                    <label for="release_year">Release Year:</label>
+                    <input type="number" id="release_year" name="release_year" min="1800" max="<?php echo date('Y') + 10; ?>" value="<?php echo date('Y'); ?>" required>
                 </div>
 
                 <div class="form-group">

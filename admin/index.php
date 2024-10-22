@@ -3,9 +3,20 @@ session_start();
 require_once '../includes/db_connect.php';
 require_once '../includes/functions.php';
 
-if (!is_admin_logged_in()) {
+error_log("Session data in index.php: " . print_r($_SESSION, true));
+
+if (!is_admin_logged_in() || !isset($_SESSION['admin_role'])) {
     redirect('login.php');
 }
+
+// Add error reporting for debugging
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Debug: Print session data
+echo "<pre>";
+print_r($_SESSION);
+echo "</pre>";
 
 // Fetch some basic statistics for the dashboard
 $stmt = $pdo->query("SELECT COUNT(*) FROM inventory");

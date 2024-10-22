@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $isbn = sanitize_input($_POST['isbn']);
     $price = floatval($_POST['price']);
     $quantity = intval($_POST['quantity']);
-    $release_date = sanitize_input($_POST['release_date']);
+    $release_year = intval($_POST['release_year']);
     $img = sanitize_input($_POST['img']);
     $genres = isset($_POST['genres']) ? implode(',', $_POST['genres']) : '';
     $category = sanitize_input($_POST['category']);
@@ -59,8 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error = "Please fill all required fields with valid data.";
     } else {
         try {
-            $stmt = $pdo->prepare("UPDATE inventory SET book_name = ?, author = ?, isbn = ?, price = ?, quantity = ?, release_date = ?, img = ?, genres = ?, category = ?, status = ?, is_special = ?, special_price = ? WHERE id = ?");
-            $stmt->execute([$book_name, $author, $isbn, $price, $quantity, $release_date, $img, $genres, $category, $status, $is_special, $special_price, $book_id]);
+            $stmt = $pdo->prepare("UPDATE inventory SET book_name = ?, author = ?, isbn = ?, price = ?, quantity = ?, release_year = ?, img = ?, genres = ?, category = ?, status = ?, is_special = ?, special_price = ? WHERE id = ?");
+            $stmt->execute([$book_name, $author, $isbn, $price, $quantity, $release_year, $img, $genres, $category, $status, $is_special, $special_price, $book_id]);
             $_SESSION['success_message'] = "Book updated successfully!";
             header("Location: inventory_edit.php?id=" . $book_id);
             exit();
@@ -119,8 +119,8 @@ if (isset($_SESSION['success_message'])) {
                     <input type="number" id="quantity" name="quantity" min="0" value="<?php echo $book['quantity']; ?>" required>
                 </div>
                 <div class="form-group">
-                    <label for="release_date">Release Date:</label>
-                    <input type="date" id="release_date" name="release_date" value="<?php echo $book['release_date']; ?>">
+                    <label for="release_year">Release Year:</label>
+                    <input type="number" id="release_year" name="release_year" min="1800" max="<?php echo date('Y') + 10; ?>" value="<?php echo $item['release_year']; ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="img">Image URL:</label>

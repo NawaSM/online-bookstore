@@ -81,11 +81,14 @@ function getCart($pdo, $user_id) {
         $stmt->execute([$user_id]);
         $cart_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
-        error_log('Cart items for user ' . $user_id . ': ' . print_r($cart_items, true));
+        $response = [
+            'items' => $cart_items,
+            'applied_discount' => $_SESSION['applied_discount'] ?? 0,
+            'applied_promo_code' => $_SESSION['applied_promo_code'] ?? ''
+        ];
         
-        echo json_encode($cart_items);
+        echo json_encode($response);
     } catch (PDOException $e) {
-        error_log('Error in getCart: ' . $e->getMessage());
         echo json_encode(['error' => $e->getMessage()]);
     }
 }
