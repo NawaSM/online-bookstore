@@ -63,23 +63,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
     <main>
         <section class="ad-carousel">
             <div class="ad-container">
-                <div class="ad-slide active">
-                    <div class="promo-banner">
-                        <h2>SPEND OVER RM99</h2>
-                        <p>RECEIVE SHIPPING DISCOUNTS!</p>
-                        <span class="free-delivery">FREE DELIVERY</span>
-                        <span class="rm1-rebate">RM1 REBATE</span>
-                    </div>
-                </div>
-                <div class="ad-slide">
-                    <img src="images/ad1.jpg" alt="Advertisement 1">
-                </div>
-                <div class="ad-slide">
-                    <img src="images/ad2.jpg" alt="Advertisement 2">
-                </div>
-                <div class="ad-slide">
-                    <img src="images/ad3.jpg" alt="Advertisement 3">
-                </div>
+                <!-- Banners will be loaded dynamically -->
             </div>
             <button class="nav-button prev">‹</button>
             <button class="nav-button next">›</button>

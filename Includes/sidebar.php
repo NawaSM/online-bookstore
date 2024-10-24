@@ -11,6 +11,7 @@
             <li><a href="manage_coming_soon.php">Manage Coming Soon</a></li>
             <li><a href="manage_new.php">Manage New Books</a></li>
             <li><a href="manage_specials.php">Manage Specials</a></li>
+            <li><a href="manage_banner_ads.php">Manage Banner Ads</a></li>
             <li><a href="manage_promo_codes.php">Manage Promo Codes</a></li>
             <?php if (isset($_SESSION['admin_role']) && $_SESSION['admin_role'] === 'senior'): ?>
                 <li><a href="manage_admins.php">Manage Admins</a></li>

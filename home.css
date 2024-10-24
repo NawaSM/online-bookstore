@@ -136,6 +136,10 @@ main {
     padding: 20px 5%;
     text-align: center;
     position: relative;
+    height: 300px; /* Match the height of image banners */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .promo-banner h2 {

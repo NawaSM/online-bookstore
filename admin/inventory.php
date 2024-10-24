@@ -55,8 +55,10 @@ $genres_map = array_column($all_genres, 'name', 'id');
                     <?php foreach ($inventory_items as $item): ?>
                     <tr>
                         <td>
-                            <?php if ($item['img']): ?>
-                                <img src="<?php echo htmlspecialchars($item['img']); ?>" alt="<?php echo htmlspecialchars($item['book_name']); ?>">
+                            <?php if ($item['image_data']): ?>
+                                <img src="serve_image.php?type=book&id=<?php echo $item['id']; ?>" 
+                                    alt="<?php echo htmlspecialchars($item['book_name']); ?>"
+                                    class="inventory-table-image">
                             <?php else: ?>
                                 No Image
                             <?php endif; ?>

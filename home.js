@@ -1,21 +1,58 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Ad Carousel Section
     const adCarousel = {
-        slides: document.querySelectorAll('.ad-slide'),
+        slides: [],
+        container: document.querySelector('.ad-container'),
         prevButton: document.querySelector('.nav-button.prev'),
         nextButton: document.querySelector('.nav-button.next'),
         currentIndex: 0,
         intervalId: null,
 
         init() {
-            this.showSlide(this.currentIndex);
+            this.loadBanners();
             this.prevButton.addEventListener('click', () => this.prevSlide());
             this.nextButton.addEventListener('click', () => this.nextSlide());
-            this.startAutoScroll();
 
             const carouselElement = document.querySelector('.ad-carousel');
             carouselElement.addEventListener('mouseenter', () => this.stopAutoScroll());
             carouselElement.addEventListener('mouseleave', () => this.startAutoScroll());
+        },
+
+        loadBanners() {
+            fetch('get_banners.php')
+                .then(response => response.json())
+                .then(banners => {
+                    this.container.innerHTML = '';
+                    banners.forEach((banner, index) => {
+                        const slide = document.createElement('div');
+                        slide.className = 'ad-slide' + (index === 0 ? ' active' : '');
+                        
+                        if (banner.type === 'image') {
+                            slide.innerHTML = `
+                                <img src="serve_image.php?type=banner&id=${banner.id}" 
+                                    alt="${banner.title}">
+                            `;
+                        } else { // promo type
+                            slide.innerHTML = `
+                                <div class="promo-banner">
+                                    <h2>${banner.promo_heading}</h2>
+                                    <p>${banner.promo_text}</p>
+                                    <span class="free-delivery">FREE DELIVERY</span>
+                                    <span class="rm1-rebate">RM1 REBATE</span>
+                                </div>
+                            `;
+                        }
+                        
+                        this.container.appendChild(slide);
+                    });
+                    
+                    this.slides = document.querySelectorAll('.ad-slide');
+                    if (this.slides.length > 0) {
+                        this.showSlide(0);
+                        this.startAutoScroll();
+                    }
+                })
+                .catch(error => console.error('Error loading banners:', error));
         },
 
         showSlide(index) {
@@ -35,7 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
         },
 
         startAutoScroll() {
-            this.intervalId = setInterval(() => this.nextSlide(), 5000);
+            if (this.slides.length > 1) {
+                this.intervalId = setInterval(() => this.nextSlide(), 5000);
+            }
         },
 
         stopAutoScroll() {
@@ -236,3 +275,35 @@ document.addEventListener('DOMContentLoaded', () => {
     search.init();
     loginCheck.init();
 });
+
+function loadBanners() {
+    fetch('get_banners.php')
+        .then(response => response.json())
+        .then(banners => {
+            const container = document.querySelector('.ad-container');
+            container.innerHTML = '';
+            
+            banners.forEach(banner => {
+                const slide = document.createElement('div');
+                slide.className = 'ad-slide';
+                
+                if (banner.type === 'image') {
+                    slide.innerHTML = `
+                        <img src="serve_image.php?type=banner&id=${banner.id}" 
+                             alt="${banner.title}">
+                    `;
+                } else {
+                    slide.innerHTML = `
+                        <div class="promo-banner">
+                            <h2>${banner.promo_heading}</h2>
+                            <p>${banner.promo_text}</p>
+                        </div>
+                    `;
+                }
+                
+                container.appendChild(slide);
+            });
+            
+            initializeCarousel();
+        });
+}

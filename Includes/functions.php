@@ -27,3 +27,29 @@ function getGenreNames($pdo, $genreIds) {
     $stmt->execute($ids);
     return $stmt->fetchColumn();
 }
+
+function handle_image_upload($pdo, $stmt) {
+    if (!isset($_FILES['image']) || $_FILES['image']['error'] !== UPLOAD_ERR_OK) {
+        throw new Exception('No image uploaded or upload error');
+    }
+
+    $file = $_FILES['image'];
+    $allowedTypes = ['image/jpeg', 'image/png'];
+    $maxSize = 2 * 1024 * 1024; // 2MB
+
+    if (!in_array($file['type'], $allowedTypes)) {
+        throw new Exception('Invalid file type. Only JPG and PNG are allowed.');
+    }
+
+    if ($file['size'] > $maxSize) {
+        throw new Exception('File size too large. Maximum size is 2MB.');
+    }
+
+    // Read image data
+    $imageData = file_get_contents($file['tmp_name']);
+    $imageType = $file['type'];
+
+    // Bind the image data and type to the prepared statement
+    $stmt->bindParam(':image_data', $imageData, PDO::PARAM_LOB);
+    $stmt->bindParam(':image_type', $imageType);
+}
