@@ -1,0 +1,220 @@
+:root {
+    --primary-color: hsl(240, 93%, 16%);
+    --secondary-color: #132231;
+    --accent-color: #FFA07A;
+    --background-color: #f0ecf5;
+    --text-color: #333;
+    --white: #fff;
+}
+
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header Styles */
+header {
+    background-color: var(--primary-color);
+    color: var(--white);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--white);
+}
+
+.user-actions a {
+    text-decoration: none;
+    color: var(--white);
+    margin-left: 15px;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+}
+
+.main-nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-right: 20px;
+}
+
+.main-nav ul li a {
+    color: var(--white);
+    text-decoration: none;
+}
+
+/* Search Bar */
+.search-bar {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    margin: 0 20px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+}
+
+.search-bar button {
+    background: none;
+    border: none;
+    margin-left: -30px;
+    color: #666;
+    cursor: pointer;
+}
+
+/* Main Content */
+main {
+    flex-grow: 1;
+    margin-top: 120px; /* Adjust based on your header height */
+    padding: 20px 5%;
+}
+
+.profile-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+}
+
+footer nav a {
+    color: var(--white);
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+/* Profile specific styles */
+.sidebar {
+    width: 200px;
+}
+
+.nav-btn {
+    background-color: #fff;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    margin: 5px 0;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-btn:hover {
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.8);
+    background-color: rgba(3, 138, 255, 0.1);
+}
+
+.nav-btn.active {
+    background-color: rgba(255, 165, 0, 0.1);
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.8);
+    font-weight: bold;
+}
+
+.logout-btn {
+    background-color: #ff3b30 !important;
+    color: var(--white) !important;
+    text-align: center !important;
+    font-weight: bold !important;
+}
+
+.logout-btn:hover {
+    background-color: #d63029 !important;
+    box-shadow: 0 0 10px rgba(255, 59, 48, 0.8) !important;
+}
+
+.profile-content {
+    flex-grow: 1;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Styles */
+.profile-form {
+    width: 100%;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    flex-basis: 48%;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .profile-content {
+        width: 100%;
+    }
+}

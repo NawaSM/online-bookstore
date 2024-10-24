@@ -1,0 +1,255 @@
+/* Define the Cart color scheme as CSS variables */
+:root {
+    --primary-color: hsl(240, 93%, 16%); /* Example Cart primary color */
+    --secondary-color: #132231; /* Example Cart secondary color */
+    --white: #ffffff;
+    --text-color: #202124; /* Text color used in Cart */
+    --button-bg: hsl(240, 93%, 16%); /* Button background (primary) */
+    --button-hover-bg: #1558c9; /* Hover state for buttons */
+}
+
+/* Apply the color scheme to Wishlist */
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    background-color: #f0ecf5;
+}
+
+main {
+    flex-grow: 1;
+}
+
+
+/* Header Styling - Cart layout */
+header {
+    background-color: var(--primary-color); /* Cart primary color */
+    color: var(--white);
+    padding: 15px 5%; /* Adjusted padding for Cart-like layout */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 0px; /* Gap above header */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+header nav a {
+    color: var(--white); /* White text for links */
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 20px; /* Space between links */
+}
+
+header .search-bar {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+header .search-bar input {
+    background-color: var(--secondary-color); /* Cart secondary color */
+    color: var(--text-color); /* Cart text color */
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid var(--primary-color);
+    width: 200px;
+    margin-left: 20px;
+}
+
+header .cart-icon {
+    margin-left: 20px;
+    font-size: 20px;
+    color: var(--white);
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 250px;
+    background-color: transparent; /* Cart secondary color */
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    color: var(--white); /* White text for sidebar */
+}
+
+.sidebar button {
+    background-color: var(--button-bg); /* Cart button color */
+    color: var(--white); /* White text for buttons */
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.sidebar button:hover {
+    background-color: var(--button-hover-bg); /* Hover state */
+}
+
+/* Wishlist Items Styling */
+.wishlist-items {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: var(--white); /* White background for main content */
+    color: var(--text-color); /* Cart text color */
+}
+
+.items-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.items-container .item {
+    background-color: var(--secondary-color); /* Cart secondary color */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    color: var(--white); /* White text */
+    position: relative;
+}
+
+.items-container .item:hover {
+    background-color: var(--primary-color); /* Change background on hover */
+    color: var(--white); /* White text on hover */
+}
+
+.items-container .item img {
+    max-width: 100%;
+    height: auto;
+}
+
+.items-container .item-details {
+    display: none;
+}
+
+.items-container .item input[type="checkbox"] {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* Footer Styling */
+footer {
+    background-color: var(--primary-color); /* Cart primary color */
+    color: var(--white);
+    text-align: center;
+    padding: 1rem;
+    margin-top: 20px;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+}
+
+footer nav a {
+    color: var(--white); /* White footer links */
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+/* Buttons and Interaction Styling */
+button {
+    background-color: var(--button-bg); /* Cart button color */
+    color: var(--white);
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--button-hover-bg); /* Cart button hover color */
+}
+
+/* Wishlist-Specific Containers */
+.wishlist-count {
+    margin: 20px 0;
+    color: var(--black); /* White text for count */
+}
+
+.search-container {
+    margin-bottom: 20px;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--primary-color);
+    background-color: transparent; /* Match Cart scheme */
+    color: var(--white); /* White text */
+}
+
+.sort-menu {
+    display: none;
+    background-color: var(--white);
+    border: 1px solid #ddd;
+    position: absolute;
+    z-index: 1;
+}
+
+.sort-container {
+    position: relative;
+}
+
+.sort-container button {
+    margin-bottom: 5px;
+    background-color: var(--button-bg);
+    color: var(--white);
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sort-container button:hover {
+    background-color: var(--button-hover-bg); /* Hover state */
+}
+
+.sort-menu button {
+    background-color: var(--primary-color); /* Dropdown button background */
+    color: var(--white); /* White text */
+    padding: 10px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+}
+
+.sort-menu button:hover {
+    background-color: var(--button-hover-bg); /* Hover state */
+}
+
+/* General Media Queries */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .search-bar {
+        margin: 10px 0;
+        width: 100%;
+    }
+
+    header nav {
+        margin-bottom: 10px;
+    }
+}
