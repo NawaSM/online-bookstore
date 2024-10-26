@@ -3,8 +3,8 @@ session_start();
 require_once '../config/database.php';
 require_once '../includes/functions.php';
 
-if (isLoggedIn()) {
-    redirectTo('index.php');
+if (is_admin_logged_in()) {
+    redirect('index.php');
 }
 
 $error = '';
