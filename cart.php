@@ -1,7 +1,31 @@
 <?php
 session_start();
+require_once 'includes/db_connect.php';
+require_once 'includes/functions.php';
+
 $isLoggedIn = isset($_SESSION['user_id']);
+
+// For debugging:
+/*var_dump($_SESSION);
+
+echo "<h2>Debug Information:</h2>";
+echo "User ID: " . ($_SESSION['user_id'] ?? 'Not set') . "<br>";*/
+
+// Check cart items in the database
+$user_id = $_SESSION['user_id'] ?? 0;
+$stmt = $pdo->prepare("SELECT ci.*, i.book_name, i.price 
+                       FROM cart_items ci
+                       JOIN inventory i ON ci.book_id = i.id
+                       WHERE ci.user_id = ?");
+$stmt->execute([$user_id]);
+$cart_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+/*echo "<h3>Cart Items in Database:</h3>";
+echo "<pre>";
+print_r($cart_items);
+echo "</pre>";*/
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,11 +93,11 @@ $isLoggedIn = isset($_SESSION['user_id']);
             <h2>Cart Summary</h2>
             <div id="summary-details"></div>
             <div id="discount-section">
-                <input type="text" id="discount-code" placeholder="Enter discount code">
-                <button class="navy-button">Apply Discount</button>
+                <input type="text" id="discount-code" placeholder="Enter promo code">
+                <button id="apply-discount" class="navy-button">Apply Promo</button>
             </div>
-            <textarea id="special-remarks" placeholder="Special remarks"></textarea>
-            <button class="navy-button">Pay Now</button>
+            <textarea id="special-remarks" placeholder="Special remarks for your order"></textarea>
+            <button id="pay-button" class="navy-button">Proceed to Checkout</button>
         </div>
         <div id="payment-status"></div>
     </div>
@@ -90,5 +114,15 @@ $isLoggedIn = isset($_SESSION['user_id']);
         </nav>
     </footer>
     <script src="cart.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM fully loaded');
+        try {
+            loadCart();
+        } catch (error) {
+            console.error('Error loading cart:', error);
+        }
+    });
+    </script>
 </body>
 </html>

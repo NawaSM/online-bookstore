@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once 'includes/db_connect.php';
 $isLoggedIn = isset($_SESSION['user_id']);
 ?>
 <!DOCTYPE html>
@@ -8,23 +9,8 @@ $isLoggedIn = isset($_SESSION['user_id']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NawLexKen Books</title>
-    <!-- Use the same CSS file as the original for consistent styling -->
     <link rel="stylesheet" href="home.css">
     <script src="https://kit.fontawesome.com/1ff274c5ae.js" crossorigin="anonymous"></script>
-    <script>
-    function checkLogin(event, destination) {
-        event.preventDefault();
-        fetch('check_login.php')
-            .then(response => response.json())
-            .then(data => {
-                if (data.loggedIn) {
-                    window.location.href = destination;
-                } else {
-                    window.location.href = 'login.php';
-                }
-            });
-    }
-    </script>
 </head>
 <body>
     <header>
@@ -42,7 +28,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
         </div>
         <nav class="main-nav">
             <ul>
-                <li><a href="bestsellers.php">Bestsellers</a></li>
+                <li><a href="#bestsellers">Bestsellers</a></li>
                 <li><a href="#coming-soon">Coming Soon</a></li>
                 <li><a href="#new">New</a></li>
                 <li><a href="#specials">Specials</a></li>
@@ -52,53 +38,113 @@ $isLoggedIn = isset($_SESSION['user_id']);
                 <button onclick="clearSearch()">✖</button>
             </div>
             <div class="icons">
-                <!-- Ensure buttons are aligned properly using flexbox -->
-                <a href="#" onclick="checkLogin(event, 'wishlist1.php')" aria-label="Wishlist"><i class="fas fa-heart"></i></a>
-                <a href="#" onclick="checkLogin(event, 'cart.php')" aria-label="Shopping Cart"><i class="fas fa-shopping-cart"></i></a>
+                <a href="#" onclick="checkLogin(event, 'wishlist1.php')" aria-label="Wishlist">
+                    <i class="fas fa-heart"></i>
+                </a>
+                <a href="#" onclick="checkLogin(event, 'cart.php')" aria-label="Shopping Cart">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
             </div> 
         </nav>
     </header>
 
-
     <main>
         <section class="ad-carousel">
             <div class="ad-container">
-                <div class="ad-slide active">
-                    <div class="promo-banner">
-                        <h2>SPEND OVER RM99</h2>
-                        <p>RECEIVE SHIPPING DISCOUNTS!</p>
-                        <span class="free-delivery">FREE DELIVERY</span>
-                        <span class="rm1-rebate">RM1 REBATE</span>
-                    </div>
-                </div>
-                <div class="ad-slide">
-                    <img src="images/ad1.jpg" alt="Advertisement 1">
-                </div>
-                <div class="ad-slide">
-                    <img src="images/ad2.jpg" alt="Advertisement 2">
-                </div>
-                <div class="ad-slide">
-                    <img src="images/ad3.jpg" alt="Advertisement 3">
-                </div>
+                <!-- Banners will be loaded dynamically -->
             </div>
             <button class="nav-button prev">‹</button>
             <button class="nav-button next">›</button>
         </section>
 
-        <section class="bestsellers">
+        <!-- Bestsellers Section -->
+        <section id="bestsellers" class="books-section">
             <div class="section-header">
                 <h3>Bestsellers</h3>
                 <button class="view-more">View More</button>
             </div>
             <div class="book-slider-container">
                 <button class="slider-button left">‹</button>
-                <div id="bookSlider" class="book-slider">
-                    <!-- Book items will be dynamically added here -->
+                <div id="bookSlider" class="book-slider" data-category="bestseller">
+                    <!-- Books will be loaded dynamically -->
+                    <div class="loading-spinner">Loading books...</div>
+                </div>
+                <button class="slider-button right">›</button>
+            </div>
+        </section>
+
+        <!-- Coming Soon Section -->
+        <section id="coming-soon" class="books-section">
+            <div class="section-header">
+                <h3>Coming Soon</h3>
+                <button class="view-more">View More</button>
+            </div>
+            <div class="book-slider-container">
+                <button class="slider-button left">‹</button>
+                <div class="book-slider" data-category="coming_soon">
+                    <!-- Books will be loaded dynamically -->
+                </div>
+                <button class="slider-button right">›</button>
+            </div>
+        </section>
+
+        <!-- New Releases Section -->
+        <section id="new" class="books-section">
+            <div class="section-header">
+                <h3>New Releases</h3>
+                <button class="view-more">View More</button>
+            </div>
+            <div class="book-slider-container">
+                <button class="slider-button left">‹</button>
+                <div class="book-slider" data-category="new">
+                    <!-- Books will be loaded dynamically -->
+                </div>
+                <button class="slider-button right">›</button>
+            </div>
+        </section>
+
+        <!-- Specials Section -->
+        <section id="specials" class="books-section">
+            <div class="section-header">
+                <h3>Special Offers</h3>
+                <button class="view-more">View More</button>
+            </div>
+            <div class="book-slider-container">
+                <button class="slider-button left">‹</button>
+                <div class="book-slider" data-category="special">
+                    <!-- Books will be loaded dynamically -->
                 </div>
                 <button class="slider-button right">›</button>
             </div>
         </section>
     </main>
+
+    <!-- Book Details Modal -->
+    <div id="book-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-book-details">
+                <div class="book-image">
+                    <img id="modal-image" src="" alt="Book Cover">
+                </div>
+                <div class="book-info">
+                    <h2 id="modal-title"></h2>
+                    <p id="modal-author" class="author"></p>
+                    <p id="modal-isbn" class="isbn"></p>
+                    <p id="modal-price" class="price"></p>
+                    <p id="modal-special-price" class="special-price"></p>
+                    <p id="modal-category" class="category"></p>
+                    <p id="modal-genres" class="genres"></p>
+                    <p id="modal-release-year" class="release-year"></p>
+                    <p id="modal-status" class="status"></p>
+                    <div class="modal-buttons">
+                        <button id="modal-add-to-cart" class="add-to-cart">Add to Cart</button>
+                        <button id="modal-add-to-wishlist" class="add-to-wishlist">Add to Wishlist</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <p>&copy; 2024 Online Bookstore. All rights reserved.</p>
@@ -109,19 +155,24 @@ $isLoggedIn = isset($_SESSION['user_id']);
         </nav>
     </footer>
 
-    <div id="book-modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <img id="modal-image" src="" alt="Book Cover">
-            <h2 id="modal-title"></h2>
-            <p id="modal-price"></p>
-            <div id="modal-rating"></div>
-            <p id="modal-description"></p>
-            <button class="add-to-cart">Add to Cart</button>
-            <button class="add-to-wishlist">Add to Wishlist</button>
-        </div>
-    </div>
-
     <script src="home.js"></script>
+    <script>
+        function checkLogin(event, destination) {
+            event.preventDefault();
+            fetch('check_login.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.loggedIn) {
+                        window.location.href = destination;
+                    } else {
+                        window.location.href = 'login.php';
+                    }
+                });
+        }
+
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+        }
+    </script>
 </body>
 </html>
