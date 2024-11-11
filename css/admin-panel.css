@@ -204,6 +204,11 @@ input[type="date"] {
     color: #fff;
     font-size: 16px;
     z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 200px;
+    max-width: 400px;
 }
 
 .notification.success {
@@ -214,9 +219,18 @@ input[type="date"] {
     background-color: #dc3545;
 }
 
+.notification-message {
+    margin-right: 15px;
+    flex-grow: 1;
+}
+
 .notification-close {
-    margin-left: 10px;
     cursor: pointer;
+    padding: 0 5px;
+}
+
+.notification-close:hover {
+    opacity: 0.8;
 }
 .forgot-password-link {
     margin-top: 15px;
@@ -523,4 +537,88 @@ input:checked + .slider:before {
     padding: 10px;
     border-radius: 4px;
     max-width: 200px;
+}
+
+/* Order View Styles */
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.order-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.order-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.order-section.full-width {
+    grid-column: 1 / -1;
+}
+
+.info-group p {
+    margin: 0.5rem 0;
+}
+
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.status-badge.pending { background: #FFA500; color: white; }
+.status-badge.processing { background: #3498db; color: white; }
+.status-badge.shipped { background: #2ecc71; color: white; }
+.status-badge.delivered { background: #27ae60; color: white; }
+.status-badge.cancelled { background: #e74c3c; color: white; }
+
+.status-timeline {
+    margin-top: 1rem;
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.timeline-item:last-child {
+    border-bottom: none;
+}
+
+.timeline-status {
+    margin-right: 1rem;
+}
+
+.timeline-details p {
+    margin: 0.25rem 0;
+    color: #666;
+}
+
+.status-form {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.remark {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
 }

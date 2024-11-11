@@ -3,17 +3,23 @@ session_start();
 require_once '../includes/db_connect.php';
 require_once '../includes/functions.php';
 
+// Initialize variables
+$error = '';
+$success = '';
+
+// Check for session success message
+if (isset($_SESSION['success_message'])) {
+    $success = $_SESSION['success_message'];
+    unset($_SESSION['success_message']);
+}
 if (!is_admin_logged_in()) {
     redirect('login.php');
 }
 
-$error = '';
-$success = '';
-
 // Fetch genres and categories
 try {
     $stmt = $pdo->query("SELECT * FROM genres ORDER BY name");
-    $genres = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $all_genres = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $stmt = $pdo->query("SELECT * FROM categories ORDER BY name");
     $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -66,19 +72,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
 
             $pdo->commit();
-            $success = "Book added successfully!";
+            $_SESSION['success_message'] = "Book added successfully!";
+            header("Location: " . $_SERVER['PHP_SELF']);
+            exit();
         } catch (Exception $e) {
             $pdo->rollBack();
             $error = "Error adding book: " . $e->getMessage();
         }
     }
-}
-?>
-
-// Check for success message in session
-if (isset($_SESSION['success_message'])) {
-    $success = $_SESSION['success_message'];
-    unset($_SESSION['success_message']);
 }
 ?>
 
@@ -114,9 +115,7 @@ if (isset($_SESSION['success_message'])) {
                 </ul>
             </div>
 
-            <form action="" method="post" enctype="multipart/form-data">
-
-            <form action="inventory_add.php" method="post">
+            <form action="inventory_add.php" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="book_name">Book Name:</label>
                     <input type="text" id="book_name" name="book_name" required>
@@ -155,60 +154,14 @@ if (isset($_SESSION['success_message'])) {
                 <div class="form-group">
                     <label>Genres:</label>
                     <div class="genres-grid">
-                        <div class="genre-row">
+                        <?php foreach ($all_genres as $genre): ?>
                             <label class="genre-item">
-                                <input type="checkbox" name="genres[]" value="Biography">
-                                Biography
+                                <input type="checkbox" 
+                                    name="genres[]" 
+                                    value="<?php echo $genre['id']; ?>">
+                                <?php echo htmlspecialchars($genre['name']); ?>
                             </label>
-                            <label class="genre-item">
-                                <input type="checkbox" name="genres[]" value="Business">
-                                Business
-                            </label>
-                            <label class="genre-item">
-                                <input type="checkbox" name="genres[]" value="Children's">
-                                Children's
-                            </label>
-                            <label class="genre-item">
-                                <input type="checkbox" name="genres[]" value="Fantasy">
-                                Fantasy
-                            </label>
-                            <label class="genre-item">
-                                <input type="checkbox" name="genres[]" value="Fiction">
-                                Fiction
-                            </label>
-                        </div>
-                        <div class="genre-row">
-                            <label class="genre-item">
-                                <input type="checkbox" name="genres[]" value="History">
-                                History
-                            </label>
-                            <label class="genre-item">
-                                <input type="checkbox" name="genres[]" value="Mystery">
-                                Mystery
-                            </label>
-                            <label class="genre-item">
-                                <input type="checkbox" name="genres[]" value="Non-fiction">
-                                Non-fiction
-                            </label>
-                            <label class="genre-item">
-                                <input type="checkbox" name="genres[]" value="Romance">
-                                Romance
-                            </label>
-                            <label class="genre-item">
-                                <input type="checkbox" name="genres[]" value="Science Fiction">
-                                Science Fiction
-                            </label>
-                        </div>
-                        <div class="genre-row">
-                            <label class="genre-item">
-                                <input type="checkbox" name="genres[]" value="Self-help">
-                                Self-help
-                            </label>
-                            <label class="genre-item">
-                                <input type="checkbox" name="genres[]" value="Thriller">
-                                Thriller
-                            </label>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
 
@@ -255,11 +208,17 @@ if (isset($_SESSION['success_message'])) {
             </form>
         </div>
     </div>
-    <?php if ($error): ?>
-        <script>showNotification("<?php echo addslashes($error); ?>", "error");</script>
-    <?php endif; ?>
-    <?php if ($success): ?>
-        <script>showNotification("<?php echo addslashes($success); ?>", "success");</script>
-    <?php endif; ?>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        <?php if ($error): ?>
+            console.log('Error message:', <?php echo json_encode($error); ?>);
+            showNotification(<?php echo json_encode($error); ?>, 'error');
+        <?php endif; ?>
+        <?php if ($success): ?>
+            console.log('Success message:', <?php echo json_encode($success); ?>);
+            showNotification(<?php echo json_encode($success); ?>, 'success');
+        <?php endif; ?>
+    });
+    </script>
 </body>
 </html>
