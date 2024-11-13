@@ -1,0 +1,111 @@
+/* css/banner.css */
+.banner-container {
+    margin-top: 20px;
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.banner-wrapper {
+    height: 100%;
+    position: relative;
+}
+
+.banner-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.banner-slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.banner-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.promo-banner {
+    height: 100%;
+    background: linear-gradient(45deg, #4CAF50, #45a049);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.promo-banner h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.promo-banner p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    line-height: 1.6;
+}
+
+.banner-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.banner-control:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.banner-prev {
+    left: 20px;
+}
+
+.banner-next {
+    right: 20px;
+}
+
+@media (max-width: 768px) {
+    .banner-container {
+        height: 300px;
+    }
+
+    .promo-banner h2 {
+        font-size: 1.8rem;
+    }
+
+    .promo-banner p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner-container {
+        height: 200px;
+    }
+
+    .promo-banner h2 {
+        font-size: 1.5rem;
+    }
+}

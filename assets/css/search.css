@@ -1,0 +1,355 @@
+/* Search Container */
+.search-container {
+    max-width: 1200px;
+    margin: 80px auto 20px;
+    padding: 0 1rem;
+}
+
+/* Search Form */
+.search-form {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    background: #fff;
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#searchInput {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    min-width: 0;
+}
+
+#categoryFilter,
+#genreFilter {
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    font-size: 1rem;
+    min-width: 150px;
+}
+
+.search-form button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.search-form button:hover {
+    background: #45a049;
+}
+
+/* Main Search Results */
+.search-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0;
+    margin-top: 80px;
+}
+
+/* Book Card Styles */
+.book-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+.book-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+
+/* Status Badges */
+.status-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    z-index: 1;
+}
+
+/* Book Information */
+.book-info {
+    padding: 1rem;
+}
+
+.book-title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #333;
+    text-decoration: none;
+    display: block;
+}
+
+.book-author {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.book-price {
+    font-weight: 500;
+    color: #4CAF50;
+}
+
+/* Status Colors */
+.book-status {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-bottom: 0.3rem;
+}
+
+.book-status.regular {
+    background-color: #e3f2fd;
+    color: #1976d2;
+}
+
+.book-status.bestseller {
+    background-color: #fce4ec;
+    color: #c2185b;
+}
+
+.book-status.coming_soon {
+    background-color: #f3e5f5;
+    color: #7b1fa2;
+}
+
+.book-status.new {
+    background-color: #e8f5e9;
+    color: #388e3c;
+}
+/* Advanced Filters */
+.advanced-filters {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.price-range {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.stock-filter {
+    margin-bottom: 1rem;
+}
+
+.toggle-advanced {
+    background: transparent;
+    color: #4CAF50;
+    border: 1px solid #4CAF50;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.toggle-advanced:hover {
+    background: #4CAF50;
+    color: white;
+}
+
+/* Header Search Results Specific Styles */
+#searchResults {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 1000;
+    margin-top: 5px;
+    width: 100%;
+}
+
+#searchResults .search-book-card {
+    display: flex;
+    padding: 0.75rem;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+    gap: 1rem;
+    max-height: 90px;
+    transition: background-color 0.2s;
+}
+
+#searchResults .search-book-card:hover {
+    background-color: #f8f8f8;
+}
+
+#searchResults .search-book-card:last-child {
+    border-bottom: none;
+}
+
+/* Header Search Image Styles */
+#searchResults .search-book-image {
+    width: 40px;
+    height: 60px;
+    min-width: 40px;
+    max-width: 40px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+#searchResults .search-book-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+}
+
+/* Header Search Info Styles */
+#searchResults .search-book-info {
+    flex: 1;
+    min-width: 0;
+    padding-right: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#searchResults .book-title {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.9rem;
+    line-height: 1.2;
+}
+
+#searchResults .book-author {
+    color: #666;
+    font-size: 0.8rem;
+    margin-bottom: 0.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#searchResults .book-status {
+    display: inline-block;
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    margin-bottom: 0.2rem;
+    text-transform: capitalize;
+}
+
+#searchResults .book-price {
+    color: #4CAF50;
+    font-weight: 500;
+    font-size: 0.85rem;
+    margin-top: 0.1rem;
+}
+
+#searchResults .original-price {
+    color: #999;
+    text-decoration: line-through;
+    margin-right: 0.5rem;
+    font-size: 0.8rem;
+}
+
+#searchResults .special-price {
+    color: #e53935;
+    font-weight: 500;
+}
+
+/* Genre and Category Tags */
+.genre-tag, .category-tag {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    margin: 2px;
+    background-color: #f0f0f0;
+    color: #666;
+}
+
+/* No Results Message */
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .search-form {
+        flex-direction: column;
+    }
+
+    #categoryFilter,
+    #genreFilter {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .search-results {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    .book-card img {
+        height: 200px;
+    }
+
+    #searchResults .search-book-card {
+        padding: 0.5rem;
+    }
+
+    #searchResults .search-book-image {
+        width: 35px;
+        height: 52px;
+        min-width: 35px;
+    }
+
+    #searchResults .book-title {
+        font-size: 0.85rem;
+    }
+
+    #searchResults .book-author {
+        font-size: 0.75rem;
+    }
+}

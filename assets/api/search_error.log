@@ -1,0 +1,288 @@
+[11-Nov-2024 21:28:32 Europe/Berlin] Search request received
+[11-Nov-2024 21:28:32 Europe/Berlin] Search query: Array
+(
+    [q] => Regular
+)
+
+[11-Nov-2024 21:28:32 Europe/Berlin] Testing database connection
+[11-Nov-2024 21:28:32 Europe/Berlin] Database connection successful
+[11-Nov-2024 21:28:32 Europe/Berlin] Executing query: SELECT * FROM inventory WHERE 1=1 AND (book_name LIKE ? OR author LIKE ? OR isbn LIKE ? OR status LIKE ?) ORDER BY book_name LIMIT 20
+[11-Nov-2024 21:28:32 Europe/Berlin] Parameters: Array
+(
+    [0] => %Regular%
+    [1] => %Regular%
+    [2] => %Regular%
+    [3] => %Regular%
+)
+
+[11-Nov-2024 21:28:32 Europe/Berlin] Found 3 books
+[11-Nov-2024 21:28:32 Europe/Berlin] Search request received
+[11-Nov-2024 21:28:32 Europe/Berlin] Search query: Array
+(
+    [q] => Regular
+)
+
+[11-Nov-2024 21:28:32 Europe/Berlin] Testing database connection
+[11-Nov-2024 21:28:32 Europe/Berlin] Database connection successful
+[11-Nov-2024 21:28:32 Europe/Berlin] Executing query: SELECT * FROM inventory WHERE 1=1 AND (book_name LIKE ? OR author LIKE ? OR isbn LIKE ? OR status LIKE ?) ORDER BY book_name LIMIT 20
+[11-Nov-2024 21:28:32 Europe/Berlin] Parameters: Array
+(
+    [0] => %Regular%
+    [1] => %Regular%
+    [2] => %Regular%
+    [3] => %Regular%
+)
+
+[11-Nov-2024 21:28:32 Europe/Berlin] Found 3 books
+[11-Nov-2024 21:28:45 Europe/Berlin] Search request received
+[11-Nov-2024 21:28:45 Europe/Berlin] Search query: Array
+(
+    [q] => Re
+)
+
+[11-Nov-2024 21:28:45 Europe/Berlin] Testing database connection
+[11-Nov-2024 21:28:45 Europe/Berlin] Database connection successful
+[11-Nov-2024 21:28:45 Europe/Berlin] Executing query: SELECT * FROM inventory WHERE 1=1 AND (book_name LIKE ? OR author LIKE ? OR isbn LIKE ? OR status LIKE ?) ORDER BY book_name LIMIT 20
+[11-Nov-2024 21:28:45 Europe/Berlin] Parameters: Array
+(
+    [0] => %Re%
+    [1] => %Re%
+    [2] => %Re%
+    [3] => %Re%
+)
+
+[11-Nov-2024 21:28:45 Europe/Berlin] Found 3 books
+[11-Nov-2024 21:28:46 Europe/Berlin] Search request received
+[11-Nov-2024 21:28:46 Europe/Berlin] Search query: Array
+(
+    [q] => R
+)
+
+[11-Nov-2024 21:28:46 Europe/Berlin] Testing database connection
+[11-Nov-2024 21:28:46 Europe/Berlin] Database connection successful
+[11-Nov-2024 21:28:46 Europe/Berlin] Executing query: SELECT * FROM inventory WHERE 1=1 AND (book_name LIKE ? OR author LIKE ? OR isbn LIKE ? OR status LIKE ?) ORDER BY book_name LIMIT 20
+[11-Nov-2024 21:28:46 Europe/Berlin] Parameters: Array
+(
+    [0] => %R%
+    [1] => %R%
+    [2] => %R%
+    [3] => %R%
+)
+
+[11-Nov-2024 21:28:46 Europe/Berlin] Found 9 books
+[11-Nov-2024 21:28:47 Europe/Berlin] Search request received
+[11-Nov-2024 21:28:47 Europe/Berlin] Search query: Array
+(
+    [q] => Re
+)
+
+[11-Nov-2024 21:28:47 Europe/Berlin] Testing database connection
+[11-Nov-2024 21:28:47 Europe/Berlin] Database connection successful
+[11-Nov-2024 21:28:47 Europe/Berlin] Executing query: SELECT * FROM inventory WHERE 1=1 AND (book_name LIKE ? OR author LIKE ? OR isbn LIKE ? OR status LIKE ?) ORDER BY book_name LIMIT 20
+[11-Nov-2024 21:28:47 Europe/Berlin] Parameters: Array
+(
+    [0] => %Re%
+    [1] => %Re%
+    [2] => %Re%
+    [3] => %Re%
+)
+
+[11-Nov-2024 21:28:47 Europe/Berlin] Found 3 books
+[11-Nov-2024 21:28:50 Europe/Berlin] Search request received
+[11-Nov-2024 21:28:50 Europe/Berlin] Search query: Array
+(
+    [q] => Regular Book
+)
+
+[11-Nov-2024 21:28:50 Europe/Berlin] Testing database connection
+[11-Nov-2024 21:28:50 Europe/Berlin] Database connection successful
+[11-Nov-2024 21:28:50 Europe/Berlin] Executing query: SELECT * FROM inventory WHERE 1=1 AND (book_name LIKE ? OR author LIKE ? OR isbn LIKE ? OR status LIKE ?) ORDER BY book_name LIMIT 20
+[11-Nov-2024 21:28:50 Europe/Berlin] Parameters: Array
+(
+    [0] => %Regular Book%
+    [1] => %Regular Book%
+    [2] => %Regular Book%
+    [3] => %Regular Book%
+)
+
+[11-Nov-2024 21:28:50 Europe/Berlin] Found 2 books
+[11-Nov-2024 21:28:51 Europe/Berlin] Search request received
+[11-Nov-2024 21:28:51 Europe/Berlin] Search query: Array
+(
+    [q] => Regular Book
+)
+
+[11-Nov-2024 21:28:51 Europe/Berlin] Testing database connection
+[11-Nov-2024 21:28:51 Europe/Berlin] Database connection successful
+[11-Nov-2024 21:28:51 Europe/Berlin] Executing query: SELECT * FROM inventory WHERE 1=1 AND (book_name LIKE ? OR author LIKE ? OR isbn LIKE ? OR status LIKE ?) ORDER BY book_name LIMIT 20
+[11-Nov-2024 21:28:51 Europe/Berlin] Parameters: Array
+(
+    [0] => %Regular Book%
+    [1] => %Regular Book%
+    [2] => %Regular Book%
+    [3] => %Regular Book%
+)
+
+[11-Nov-2024 21:28:51 Europe/Berlin] Found 2 books
+[11-Nov-2024 21:28:52 Europe/Berlin] Search request received
+[11-Nov-2024 21:28:52 Europe/Berlin] Search query: Array
+(
+    [q] => Regular Book 1
+)
+
+[11-Nov-2024 21:28:52 Europe/Berlin] Testing database connection
+[11-Nov-2024 21:28:52 Europe/Berlin] Database connection successful
+[11-Nov-2024 21:28:52 Europe/Berlin] Executing query: SELECT * FROM inventory WHERE 1=1 AND (book_name LIKE ? OR author LIKE ? OR isbn LIKE ? OR status LIKE ?) ORDER BY book_name LIMIT 20
+[11-Nov-2024 21:28:52 Europe/Berlin] Parameters: Array
+(
+    [0] => %Regular Book 1%
+    [1] => %Regular Book 1%
+    [2] => %Regular Book 1%
+    [3] => %Regular Book 1%
+)
+
+[11-Nov-2024 21:28:52 Europe/Berlin] Found 1 books
+[11-Nov-2024 21:28:53 Europe/Berlin] Search request received
+[11-Nov-2024 21:28:53 Europe/Berlin] Search query: Array
+(
+    [q] => Regular Book 1
+)
+
+[11-Nov-2024 21:28:53 Europe/Berlin] Testing database connection
+[11-Nov-2024 21:28:53 Europe/Berlin] Database connection successful
+[11-Nov-2024 21:28:53 Europe/Berlin] Executing query: SELECT * FROM inventory WHERE 1=1 AND (book_name LIKE ? OR author LIKE ? OR isbn LIKE ? OR status LIKE ?) ORDER BY book_name LIMIT 20
+[11-Nov-2024 21:28:53 Europe/Berlin] Parameters: Array
+(
+    [0] => %Regular Book 1%
+    [1] => %Regular Book 1%
+    [2] => %Regular Book 1%
+    [3] => %Regular Book 1%
+)
+
+[11-Nov-2024 21:28:53 Europe/Berlin] Found 1 books
+[11-Nov-2024 21:28:53 Europe/Berlin] Search request received
+[11-Nov-2024 21:28:53 Europe/Berlin] Search query: Array
+(
+    [q] => Regular Book 1
+)
+
+[11-Nov-2024 21:28:53 Europe/Berlin] Testing database connection
+[11-Nov-2024 21:28:53 Europe/Berlin] Database connection successful
+[11-Nov-2024 21:28:53 Europe/Berlin] Executing query: SELECT * FROM inventory WHERE 1=1 AND (book_name LIKE ? OR author LIKE ? OR isbn LIKE ? OR status LIKE ?) ORDER BY book_name LIMIT 20
+[11-Nov-2024 21:28:53 Europe/Berlin] Parameters: Array
+(
+    [0] => %Regular Book 1%
+    [1] => %Regular Book 1%
+    [2] => %Regular Book 1%
+    [3] => %Regular Book 1%
+)
+
+[11-Nov-2024 21:28:53 Europe/Berlin] Found 1 books
+[11-Nov-2024 21:28:54 Europe/Berlin] Search request received
+[11-Nov-2024 21:28:54 Europe/Berlin] Search query: Array
+(
+    [q] => Regular Book 1
+)
+
+[11-Nov-2024 21:28:54 Europe/Berlin] Testing database connection
+[11-Nov-2024 21:28:54 Europe/Berlin] Database connection successful
+[11-Nov-2024 21:28:54 Europe/Berlin] Executing query: SELECT * FROM inventory WHERE 1=1 AND (book_name LIKE ? OR author LIKE ? OR isbn LIKE ? OR status LIKE ?) ORDER BY book_name LIMIT 20
+[11-Nov-2024 21:28:54 Europe/Berlin] Parameters: Array
+(
+    [0] => %Regular Book 1%
+    [1] => %Regular Book 1%
+    [2] => %Regular Book 1%
+    [3] => %Regular Book 1%
+)
+
+[11-Nov-2024 21:28:54 Europe/Berlin] Found 1 books
+[11-Nov-2024 21:29:03 Europe/Berlin] Search request received
+[11-Nov-2024 21:29:03 Europe/Berlin] Search query: Array
+(
+    [q] => Regular Book
+)
+
+[11-Nov-2024 21:29:03 Europe/Berlin] Testing database connection
+[11-Nov-2024 21:29:03 Europe/Berlin] Database connection successful
+[11-Nov-2024 21:29:03 Europe/Berlin] Executing query: SELECT * FROM inventory WHERE 1=1 AND (book_name LIKE ? OR author LIKE ? OR isbn LIKE ? OR status LIKE ?) ORDER BY book_name LIMIT 20
+[11-Nov-2024 21:29:03 Europe/Berlin] Parameters: Array
+(
+    [0] => %Regular Book%
+    [1] => %Regular Book%
+    [2] => %Regular Book%
+    [3] => %Regular Book%
+)
+
+[11-Nov-2024 21:29:03 Europe/Berlin] Found 2 books
+[11-Nov-2024 21:29:07 Europe/Berlin] Search request received
+[11-Nov-2024 21:29:07 Europe/Berlin] Search query: Array
+(
+    [q] => test
+)
+
+[11-Nov-2024 21:29:07 Europe/Berlin] Testing database connection
+[11-Nov-2024 21:29:07 Europe/Berlin] Database connection successful
+[11-Nov-2024 21:29:07 Europe/Berlin] Executing query: SELECT * FROM inventory WHERE 1=1 AND (book_name LIKE ? OR author LIKE ? OR isbn LIKE ? OR status LIKE ?) ORDER BY book_name LIMIT 20
+[11-Nov-2024 21:29:07 Europe/Berlin] Parameters: Array
+(
+    [0] => %test%
+    [1] => %test%
+    [2] => %test%
+    [3] => %test%
+)
+
+[11-Nov-2024 21:29:07 Europe/Berlin] Found 6 books
+[11-Nov-2024 21:29:08 Europe/Berlin] Search request received
+[11-Nov-2024 21:29:08 Europe/Berlin] Search query: Array
+(
+    [q] => t
+)
+
+[11-Nov-2024 21:29:08 Europe/Berlin] Testing database connection
+[11-Nov-2024 21:29:08 Europe/Berlin] Database connection successful
+[11-Nov-2024 21:29:08 Europe/Berlin] Executing query: SELECT * FROM inventory WHERE 1=1 AND (book_name LIKE ? OR author LIKE ? OR isbn LIKE ? OR status LIKE ?) ORDER BY book_name LIMIT 20
+[11-Nov-2024 21:29:08 Europe/Berlin] Parameters: Array
+(
+    [0] => %t%
+    [1] => %t%
+    [2] => %t%
+    [3] => %t%
+)
+
+[11-Nov-2024 21:29:08 Europe/Berlin] Found 9 books
+[11-Nov-2024 21:29:16 Europe/Berlin] Search request received
+[11-Nov-2024 21:29:16 Europe/Berlin] Search query: Array
+(
+    [q] => test
+)
+
+[11-Nov-2024 21:29:16 Europe/Berlin] Testing database connection
+[11-Nov-2024 21:29:16 Europe/Berlin] Database connection successful
+[11-Nov-2024 21:29:16 Europe/Berlin] Executing query: SELECT * FROM inventory WHERE 1=1 AND (book_name LIKE ? OR author LIKE ? OR isbn LIKE ? OR status LIKE ?) ORDER BY book_name LIMIT 20
+[11-Nov-2024 21:29:16 Europe/Berlin] Parameters: Array
+(
+    [0] => %test%
+    [1] => %test%
+    [2] => %test%
+    [3] => %test%
+)
+
+[11-Nov-2024 21:29:16 Europe/Berlin] Found 6 books
+[11-Nov-2024 21:29:22 Europe/Berlin] Search request received
+[11-Nov-2024 21:29:22 Europe/Berlin] Search query: Array
+(
+    [q] => test
+)
+
+[11-Nov-2024 21:29:22 Europe/Berlin] Testing database connection
+[11-Nov-2024 21:29:22 Europe/Berlin] Database connection successful
+[11-Nov-2024 21:29:22 Europe/Berlin] Executing query: SELECT * FROM inventory WHERE 1=1 AND (book_name LIKE ? OR author LIKE ? OR isbn LIKE ? OR status LIKE ?) ORDER BY book_name LIMIT 20
+[11-Nov-2024 21:29:22 Europe/Berlin] Parameters: Array
+(
+    [0] => %test%
+    [1] => %test%
+    [2] => %test%
+    [3] => %test%
+)
+
+[11-Nov-2024 21:29:22 Europe/Berlin] Found 6 books
