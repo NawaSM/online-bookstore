@@ -1,3 +1,8 @@
+<?php
+$stmt = $pdo->query("SELECT COUNT(*) FROM notifications WHERE is_read = 0");
+$unread_count = $stmt->fetchColumn();
+?>
+
 <div class="sidebar">
     <div class="logo">
         <h2>Bookstore Admin</h2>
@@ -16,10 +21,14 @@
             <?php if (isset($_SESSION['admin_role']) && $_SESSION['admin_role'] === 'senior'): ?>
                 <li><a href="manage_admins.php">Manage Admins</a></li>
             <?php endif; ?>
-            <li><a href="reports.php">Reports</a></li>
-            <li><a href="users.php">User Management</a></li>
-            <li><a href="notifications.php">Notifications</a></li>
-            <li><a href="settings.php">Settings</a></li>
+            <li>
+                <a href="notifications.php">
+                    Notifications
+                    <?php if ($unread_count > 0): ?>
+                        <span class="notification-badge"><?php echo $unread_count; ?></span>
+                    <?php endif; ?>
+                </a>
+            </li>
             <li><a href="logout.php">Logout</a></li>
         </ul>
     </nav>

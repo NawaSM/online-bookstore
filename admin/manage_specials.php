@@ -100,8 +100,8 @@ if (isset($_POST['add_special'])) {
                         <td><?php echo htmlspecialchars($book['book_name']); ?></td>
                         <td><?php echo htmlspecialchars($book['author']); ?></td>
                         <td><?php echo htmlspecialchars($book['category_name']); ?></td>
-                        <td>$<?php echo number_format($book['price'], 2); ?></td>
-                        <td>$<?php echo number_format($book['special_price'], 2); ?></td>
+                        <td>RM<?php echo number_format($book['price'], 2); ?></td>
+                        <td>RM<?php echo number_format($book['special_price'], 2); ?></td>
                         <td>
                             <form method="post" style="display:inline;">
                                 <input type="hidden" name="book_id" value="<?php echo $book['id']; ?>">

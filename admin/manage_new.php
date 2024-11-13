@@ -97,7 +97,7 @@ if (isset($_POST['add_new'])) {
                         <td><?php echo htmlspecialchars($book['book_name']); ?></td>
                         <td><?php echo htmlspecialchars($book['author']); ?></td>
                         <td><?php echo htmlspecialchars($book['category_name']); ?></td>
-                        <td><?php echo htmlspecialchars($book['release_date']); ?></td>
+                        <td><?php echo htmlspecialchars($book['release_year']); ?></td>
                         <td>
                             <form method="post" style="display:inline;">
                                 <input type="hidden" name="book_id" value="<?php echo $book['id']; ?>">

@@ -14,9 +14,9 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // Debug: Print session data
-echo "<pre>";
-print_r($_SESSION);
-echo "</pre>";
+//echo "<pre>";
+//print_r($_SESSION);
+//echo "</pre>";
 
 // Fetch some basic statistics for the dashboard
 $stmt = $pdo->query("SELECT COUNT(*) FROM inventory");

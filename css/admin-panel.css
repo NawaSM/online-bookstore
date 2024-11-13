@@ -232,6 +232,14 @@ input[type="date"] {
 .notification-close:hover {
     opacity: 0.8;
 }
+.notification-badge {
+    background: #dc3545;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 0.8em;
+    margin-left: 5px;
+}
 .forgot-password-link {
     margin-top: 15px;
     text-align: center;

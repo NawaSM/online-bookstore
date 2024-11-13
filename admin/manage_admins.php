@@ -104,7 +104,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action'])) {
                 error_log('Database error while revoking access: ' . $e->getMessage());
             }
             break;
-        // Add other actions as needed
     }
 }
 

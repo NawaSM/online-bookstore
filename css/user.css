@@ -153,4 +153,56 @@ p {
     text-decoration: none;
 }
 
-/* You may need to add Font Awesome or another icon library for the icons */
+/* Payment form styles */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#card-element {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    margin-bottom: 20px;
+}
+
+#card-errors {
+    color: #dc3545;
+    margin-top: 10px;
+}
+
+.order-summary {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 4px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.total {
+    margin-top: 20px;
+    text-align: right;
+    font-size: 1.2em;
+}
+
+.success-message {
+    text-align: center;
+    margin: 30px 0;
+    padding: 20px;
+    background: #d4edda;
+    border-radius: 4px;
+    color: #155724;
+}
+
+.next-steps {
+    text-align: center;
+    margin-top: 30px;
+}

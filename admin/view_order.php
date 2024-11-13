@@ -41,15 +41,6 @@ $stmt = $pdo->prepare("
 $stmt->execute([$order_id]);
 $order_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Fetch order remarks
-$stmt = $pdo->prepare("
-    SELECT * FROM order_remarks 
-    WHERE order_id = ?
-    ORDER BY id DESC
-");
-$stmt->execute([$order_id]);
-$remarks = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 // Fetch status history
 $stmt = $pdo->prepare("
     SELECT h.*, a.username as admin_name
@@ -204,14 +195,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
                 </div>
 
                 <!-- Customer Remarks -->
-                <?php if (!empty($remarks)): ?>
+                <?php if (!empty($order['remarks'])): ?>
                 <div class="order-section">
-                    <h2>Customer Remarks</h2>
-                    <?php foreach ($remarks as $remark): ?>
-                        <div class="remark">
-                            <p><?php echo htmlspecialchars($remark['remarks']); ?></p>
-                        </div>
-                    <?php endforeach; ?>
+                    <h2>Order Remarks</h2>
+                    <div class="remark">
+                        <p><?php echo htmlspecialchars($order['remarks']); ?></p>
+                    </div>
                 </div>
                 <?php endif; ?>
 
